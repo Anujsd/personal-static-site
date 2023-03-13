@@ -1,9 +1,10 @@
 import { postMetadata } from './postMetadata';
 import fs from 'fs';
 import matter from 'gray-matter';
+import path from 'path';
 
 const getPostMetaData = (): postMetadata[] => {
-  const folder = 'posts/';
+  const folder = path.join(process.cwd(), 'posts');
   const files = fs.readdirSync(folder);
   const markdownFiles = files.filter((file) => file.endsWith('.md'));
 
@@ -17,7 +18,6 @@ const getPostMetaData = (): postMetadata[] => {
       slug: fileName.replace('.md', ''),
     };
   });
-  console.log(__dirname);
   return posts;
 };
 

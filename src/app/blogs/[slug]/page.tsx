@@ -2,11 +2,11 @@ import fs from 'fs';
 import Markdown from 'markdown-to-jsx';
 import matter from 'gray-matter';
 import getPostMetaData from '@/components/getPostsMetadata';
+import path from 'path';
 
 const getPostContent = (slug: string) => {
-  const folder = 'posts/';
-  const file = `${folder}${slug}.md`;
-  console.log(file);
+  const folder = path.join(process.cwd(), 'posts');
+  const file = `${folder}\\${slug}.md`;
   const content = fs.readFileSync(file, 'utf-8');
   const matterResult = matter(content);
   return matterResult;
