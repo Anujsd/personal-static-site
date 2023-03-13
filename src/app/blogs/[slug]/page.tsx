@@ -6,6 +6,7 @@ import getPostMetaData from '@/components/getPostsMetadata';
 const getPostContent = (slug: string) => {
   const folder = 'posts/';
   const file = `${folder}${slug}.md`;
+  console.log(file);
   const content = fs.readFileSync(file, 'utf-8');
   const matterResult = matter(content);
   return matterResult;
