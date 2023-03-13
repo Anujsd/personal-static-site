@@ -6,7 +6,7 @@ import path from 'path';
 
 const getPostContent = (slug: string) => {
   const folder = path.join(process.cwd(), 'posts');
-  const file = `${folder}\\${slug}.md`;
+  const file = path.join(`${folder}`, `${slug}.md`);
   const content = fs.readFileSync(file, 'utf-8');
   const matterResult = matter(content);
   return matterResult;
